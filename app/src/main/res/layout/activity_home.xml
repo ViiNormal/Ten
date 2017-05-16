@@ -6,11 +6,69 @@
     android:layout_height="match_parent"
     tools:context="hsq.org.ten.activity.HomeActivity">
 
-    <RadioGroup
+    <RelativeLayout
         android:id="@+id/home_tab"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGrayF7"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/home_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_critic"
+            />
+
+        <ImageView
+            android:id="@+id/home_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/week_1"
+            android:layout_alignParentRight="true"
+            />
+
+        <ImageView
+            android:id="@+id/home_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/month_1"
+            android:layout_alignRight="@id/home_week"
+            android:layout_below="@id/home_week"
+            />
+
+        <ImageView
+            android:id="@+id/home_month_divide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/month_divide"
+            android:layout_toLeftOf="@id/home_month"
+            android:layout_below="@id/home_week"
+            />
+
+        <ImageView
+            android:id="@+id/home_date1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/date_1"
+            android:layout_toLeftOf="@id/home_month_divide"
+            />
+
+        <ImageView
+            android:id="@+id/home_date0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/date_0"
+            android:layout_toLeftOf="@id/home_date1"
+            />
+
+    </RelativeLayout>
+    <RadioGroup
+        android:id="@+id/home_bottomtab"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/colorGray3"
+        android:background="@color/colorGray21"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:gravity="center">
@@ -53,20 +111,21 @@
 
     </RadioGroup>
 
+    <FrameLayout
+        android:id="@+id/home_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/home_tab"
+        android:layout_above="@id/home_bottomtab"/>
+
     <ImageView
         android:id="@+id/home_favorite_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/icon_favorite_tip"
-        android:layout_above="@id/home_tab"
+        android:layout_above="@id/home_bottomtab"
         android:layout_alignParentRight="true"
         android:layout_margin="20dp"
         />
 
-    <FrameLayout
-        android:id="@+id/home_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/home_tab"
-        />
 </RelativeLayout>
