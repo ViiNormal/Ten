@@ -29,6 +29,7 @@ import hsq.org.ten.BaseActivity;
 import hsq.org.ten.R;
 import hsq.org.ten.config.EventConfig;
 import hsq.org.ten.config.TimeConfig;
+import hsq.org.ten.event.HomeBottomTabEvent;
 import hsq.org.ten.event.HomeTabEvent;
 import hsq.org.ten.fragment.CriticFragment;
 import hsq.org.ten.fragment.DiagramFragment;
@@ -318,6 +319,16 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void setupBottomTabVisible(HomeBottomTabEvent event) {
+        if (event.isVisible()){
+            mBottomTab.setVisibility(View.VISIBLE);
+            mFavoriteTip.setVisibility(View.VISIBLE);
+        }else {
+            mBottomTab.setVisibility(View.GONE);
+            mFavoriteTip.setVisibility(View.GONE);
+        }
+    }
     @Override
     protected void onStart() {
         super.onStart();

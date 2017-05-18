@@ -1,7 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#00f">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-</LinearLayout>
+    <hsq.org.ten.widget.CustomScrollView
+        android:id="@+id/home_novel_content_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/home_novel_content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:id="@+id/home_novel_content_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="标题"
+                android:textColor="@color/colorBack"
+                android:textSize="22sp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:id="@+id/home_novel_content_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="作者:xxx | 阅读量:xxxx"
+                android:textColor="@color/colorGray9C"
+                android:textSize="12sp"
+                android:layout_marginLeft="10dp"/>
+
+
+            <TextView
+                android:id="@+id/home_novel_content_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/colorGrayF7"
+                android:padding="10dp"
+                android:text="摘要"
+                android:textColor="@color/colorGray63" />
+
+            <TextView
+                android:id="@+id/home_novel_content_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="内容"
+                android:textColor="@color/colorGray63"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape_line" />
+
+            <TextView
+                android:id="@+id/home_novel_content_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="作者"
+                android:textColor="@color/colorBack"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/home_novel_content_authorbrief"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:text="作者简介"
+                android:textColor="@color/colorGray63"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+    </hsq.org.ten.widget.CustomScrollView>
+
+    <ProgressBar
+        android:id="@+id/home_novel_content_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+</FrameLayout>

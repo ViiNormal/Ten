@@ -6,4 +6,5 @@ package hsq.org.ten.config;
 
 public interface EventConfig {
     int HOME_TAB_TIME = 100;
+    int HOME_BOTTOM_TAB_VISIBLE = 101;
 }
