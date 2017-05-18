@@ -8,7 +8,9 @@
     <color name="colorGray33">#33333333</color>
     <color name="colorGray63">#636363</color>
     <color name="colorGray9C">#9C9C9C</color>
+    <color name="colorGrayD6">#D6D3D6</color>
     <color name="colorGrayDE">#DEDBDE</color>
     <color name="colorGrayF7">#F7F7F7</color>
     <color name="colorBack">#000000</color>
+    <color name="colorRed">#EF5552</color>
 </resources>

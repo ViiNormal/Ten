@@ -1,7 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#000">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-</LinearLayout>
+    <hsq.org.ten.widget.CustomScrollView
+        android:id="@+id/home_diagram_content_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/home_diagram_content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+
+            <ImageView
+                android:id="@+id/home_diagram_content_image1"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/home_diagram_content_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:text="标题"
+                android:textColor="@color/colorBack"
+                android:textSize="15sp" />
+
+
+            <TextView
+                android:id="@+id/home_diagram_content_authorbrief"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="作者简介"
+                android:textColor="@color/colorGray9C"
+                android:textSize="12sp" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/line" />
+
+            <TextView
+                android:id="@+id/home_diagram_content_text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorGrayF7"
+                android:padding="10dp"
+                android:text="内容1"
+                android:textColor="@color/colorGray63" />
+
+            <TextView
+                android:id="@+id/home_diagram_content_text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorGrayF7"
+                android:padding="10dp"
+                android:text="内容2"
+                android:textColor="@color/colorGray63"
+                android:gravity="right"/>
+        </LinearLayout>
+    </hsq.org.ten.widget.CustomScrollView>
+
+    <ProgressBar
+        android:id="@+id/home_diagram_content_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+</FrameLayout>

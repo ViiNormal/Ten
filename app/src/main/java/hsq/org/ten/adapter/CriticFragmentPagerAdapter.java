@@ -3,7 +3,7 @@ package hsq.org.ten.adapter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import hsq.org.ten.fragment.CriticContentFragment;
  * Created by 黄上清 on 2017/5/17.
  */
 
-public class CriticFragmentPagerAdapter extends FragmentStatePagerAdapter {
+public class CriticFragmentPagerAdapter extends FragmentPagerAdapter {
     private List<Fragment> fragments;
     private List<CriticListBean.ResultBean> data;
 

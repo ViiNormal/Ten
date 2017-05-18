@@ -2,6 +2,159 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f00">
+    >
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@color/colorRed">
+
+        <ImageView
+            android:id="@+id/home_personal_avator_login"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="35dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/avator_login"
+            />
+
+        <ImageView
+            android:id="@+id/home_personal_avator_whiteline"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/avator_whiteline"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/home_personal_avator_whiteline"
+            android:text="点击用QQ登录"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/home_personal_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的收藏"
+            android:drawableLeft="@drawable/setting_favorite"
+            android:layout_margin="10dp"
+            android:drawablePadding="5dp"
+            android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/setting_arrow"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:background="@color/colorGrayD6"
+        />
+
+    <RelativeLayout
+        android:id="@+id/home_personal_font"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="字体设置"
+            android:drawableLeft="@drawable/setting_font"
+            android:layout_margin="10dp"
+            android:drawablePadding="5dp"
+            android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/setting_arrow"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:background="@color/colorGrayD6"
+        />
+
+    <RelativeLayout
+        android:id="@+id/home_personal_aboutus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关于十个"
+            android:drawableLeft="@drawable/setting_aboutus"
+            android:layout_margin="10dp"
+            android:drawablePadding="5dp"
+            android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/setting_arrow"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:background="@color/colorGrayD6"
+        />
+
+    <RelativeLayout
+        android:id="@+id/home_personal_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="意见反馈"
+            android:drawableLeft="@drawable/setting_feedback"
+            android:layout_margin="10dp"
+            android:drawablePadding="5dp"
+            android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/setting_arrow"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:background="@color/colorGrayD6"
+        />
 </LinearLayout>
