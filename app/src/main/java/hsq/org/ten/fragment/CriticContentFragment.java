@@ -28,6 +28,8 @@ import retrofit2.Response;
  */
 
 public class CriticContentFragment extends BaseFragment implements CustomScrollView.ScrollViewListener {
+
+    public static final String TAG = CriticContentFragment.class.getName();
     private CustomScrollView mScroll;
     private ImageView mImageForPlay;
     private TextView mTitle;

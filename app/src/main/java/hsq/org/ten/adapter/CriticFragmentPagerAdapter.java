@@ -34,6 +34,12 @@ public class CriticFragmentPagerAdapter extends FragmentPagerAdapter {
         }
     }
 
+    public CriticListBean.ResultBean getDataItem(int position){
+        if (position >= 0 && position < data.size()){
+            return data.get(position);
+        }
+        return null;
+    }
     @Override
     public Fragment getItem(int position) {
         return fragments.get(position);

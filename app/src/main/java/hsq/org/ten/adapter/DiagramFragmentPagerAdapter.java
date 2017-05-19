@@ -34,6 +34,13 @@ public class DiagramFragmentPagerAdapter extends FragmentPagerAdapter {
         }
     }
 
+    public DiagramListBean.ResultBean getDataItem(int position){
+        if (position >= 0 && position < data.size()){
+            return data.get(position);
+        }
+        return null;
+    }
+
     @Override
     public Fragment getItem(int position) {
         return fragments.get(position);

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+    <RelativeLayout
+        android:id="@+id/favorite_item_layout"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorGray7B"
+        >
+
+        <TextView
+            android:id="@+id/favorite_item_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="类型"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="10dp"/>
+
+        <TextView
+            android:id="@+id/favorite_item_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="2dp"
+            android:textColor="@color/colorWhite"
+            android:layout_alignParentBottom="true"
+            android:textSize="12dp"/>
+
+
+        <TextView
+            android:id="@+id/favorite_item_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:textColor="@color/colorWhite"
+            android:layout_toRightOf="@id/favorite_item_day"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="2dp"
+            android:textSize="10dp"/>
+
+        <TextView
+            android:id="@+id/favorite_item_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01"
+            android:textColor="@color/colorWhite"
+            android:layout_toRightOf="@id/favorite_item_line"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="2dp"
+            android:textSize="8dp"/>
+
+    </RelativeLayout>
+    
+    <TextView
+        android:id="@+id/favorite_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/favorite_item_layout"
+        android:layout_toRightOf="@id/favorite_item_layout"
+        android:layout_marginLeft="10dp"
+        android:text="标题"
+        android:textSize="15sp"
+        android:textColor="@color/colorGray52"/>
+    
+    <TextView
+        android:id="@+id/favorite_item_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/favorite_item_title"
+        android:layout_below="@id/favorite_item_title"
+        android:text="摘要"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:textColor="@color/colorGrayB5"
+        android:maxLines="2"/>
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorGrayB5"
+        android:layout_marginLeft="50dp"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

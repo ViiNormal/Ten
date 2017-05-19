@@ -1,8 +1,12 @@
 package hsq.org.ten.fragment;
 
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
+import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -12,7 +16,10 @@ import hsq.org.ten.adapter.DiagramFragmentPagerAdapter;
 import hsq.org.ten.api.ApiClient;
 import hsq.org.ten.api.ApiService;
 import hsq.org.ten.bean.DiagramListBean;
+import hsq.org.ten.bean.FavoriteBean;
 import hsq.org.ten.config.EventConfig;
+import hsq.org.ten.db.FavoriteDao;
+import hsq.org.ten.event.HomeFavoriteEvent;
 import hsq.org.ten.event.HomeTabEvent;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,6 +33,8 @@ public class DiagramFragment extends BaseFragment implements ViewPager.OnPageCha
 
     public static final String TAG = DiagramFragment.class.getName();
     private ViewPager mViewPager;
+    private FavoriteDao mDao;
+    private DiagramFragmentPagerAdapter adapter;
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_diagram;
@@ -38,7 +47,7 @@ public class DiagramFragment extends BaseFragment implements ViewPager.OnPageCha
 
     @Override
     protected void initData() {
-
+        mDao = new FavoriteDao(getContext());
     }
 
     @Override
@@ -55,7 +64,6 @@ public class DiagramFragment extends BaseFragment implements ViewPager.OnPageCha
         ApiService apiService = ApiClient.getApiService();
         Call<DiagramListBean> listBeanCall = apiService.getDiagramList();
         listBeanCall.enqueue(new Callback<DiagramListBean>() {
-            private DiagramFragmentPagerAdapter adapter;
 
             @Override
             public void onResponse(Call<DiagramListBean> call, Response<DiagramListBean> response) {
@@ -88,5 +96,37 @@ public class DiagramFragment extends BaseFragment implements ViewPager.OnPageCha
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void favorite(HomeFavoriteEvent event){
+        if (event.WHAT == EventConfig.HOME_FAVORITE && TextUtils.equals(TAG, event.getTag())){
+            DiagramListBean.ResultBean dataItem = adapter.getDataItem(event.getPosition());
+            if (dataItem != null) {
+                if (event.isFavorite()) {
+                    FavoriteBean favoriteBean = new FavoriteBean(dataItem.getId(), dataItem.getType(), event.getMonth(), event.getWeek(), event.getDay(), dataItem.getTitle(), dataItem.getSummary());
+                    if (mDao.insertItem(favoriteBean)) {
+                        Toast.makeText(getContext(), "收藏成功了！", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    if (mDao.deleteItemByTypeAndId(dataItem.getType(), dataItem.getId())) {
+                        Toast.makeText(getContext(), "取消收藏成功了！", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 }

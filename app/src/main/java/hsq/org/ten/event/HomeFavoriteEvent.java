@@ -1,26 +1,18 @@
 package hsq.org.ten.event;
 
 /**
- * Created by 黄上清 on 2017/5/17.
+ * Created by 黄上清 on 2017/5/19.
  */
 
-public class HomeTabEvent extends BaseEvent {
-    private int position;
+public class HomeFavoriteEvent extends BaseEvent {
     private String tag;
+    private boolean isFavorite;
+    private int position;
     private int month;
     private int week;
     private int day;
-
-    public HomeTabEvent(int what) {
+    public HomeFavoriteEvent(int what) {
         super(what);
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
     }
 
     public String getTag() {
@@ -29,6 +21,14 @@ public class HomeTabEvent extends BaseEvent {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public int getMonth() {
@@ -53,5 +53,13 @@ public class HomeTabEvent extends BaseEvent {
 
     public void setDay(int day) {
         this.day = day;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 }

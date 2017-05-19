@@ -24,6 +24,8 @@ import retrofit2.Response;
  */
 
 public class NovelContentFragment extends BaseFragment implements CustomScrollView.ScrollViewListener {
+
+    public static final String TAG = NovelContentFragment.class.getName();
     private CustomScrollView mScroll;
     private LinearLayout mLayout;
     private TextView mTitle;

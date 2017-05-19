@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -30,13 +32,14 @@ import hsq.org.ten.R;
 import hsq.org.ten.config.EventConfig;
 import hsq.org.ten.config.TimeConfig;
 import hsq.org.ten.event.HomeBottomTabEvent;
+import hsq.org.ten.event.HomeFavoriteEvent;
 import hsq.org.ten.event.HomeTabEvent;
 import hsq.org.ten.fragment.CriticFragment;
 import hsq.org.ten.fragment.DiagramFragment;
 import hsq.org.ten.fragment.NovelFragment;
 import hsq.org.ten.fragment.PersonalFragment;
 
-public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
     private Fragment mShowFragment;
     private RadioGroup mBottomTab;
@@ -53,6 +56,9 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private long mTime;
     private Map<String, HomeTabEvent> mTabEventMap;
     private HomeTabEvent mHomeEvent;
+    private CheckBox mShareFavorite;
+    private String mTag;
+//    private Map<String, Map<Integer, HomeFavoriteEvent>> mFavoriteEventMap;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,6 +77,7 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         mDate1 = (ImageView) findViewById(R.id.home_date1);
         mBottomTab = (RadioGroup) findViewById(R.id.home_bottomtab);
         mShare = (RelativeLayout) findViewById(R.id.home_share);
+        mShareFavorite = (CheckBox) findViewById(R.id.home_share_favorite);
     }
 
     @Override
@@ -83,6 +90,7 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         mHomeEvent.setPosition(0);
         setupTabTime(mHomeEvent);
     }
+
     //初始化时间
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void setupTabTime(HomeTabEvent event) {
@@ -90,15 +98,18 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             event = mHomeEvent;
         }
         if (event.WHAT == EventConfig.HOME_TAB_TIME) {
-            String tag = event.getTag();
-            if (tag != null) {
-                mTabEventMap.put(tag, event);
-            }
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(mTime - event.getPosition() * TimeConfig.DAY_TIME);
             int month = calendar.get(Calendar.MONTH);
             int week = calendar.get(Calendar.DAY_OF_WEEK);
             int day = calendar.get(Calendar.DAY_OF_MONTH);
+            event.setMonth(month);
+            event.setWeek(week);
+            event.setDay(day);
+            String tag = event.getTag();
+            if (tag != null) {
+                mTabEventMap.put(tag, event);
+            }
             //设置月份
             switch (month) {
                 case 0:
@@ -218,6 +229,7 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         mBottomTab.setOnCheckedChangeListener(this);
         mFavoriteTip.setOnClickListener(this);
         mShare.setOnClickListener(this);
+        mShareFavorite.setOnCheckedChangeListener(this);
     }
 
     @Override
@@ -229,6 +241,7 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
         switch (checkedId) {
             case R.id.home_critic:
+                mTag = CriticFragment.TAG;
                 switchPage(CriticFragment.TAG);
                 mTab.setVisibility(View.VISIBLE);
                 mFavoriteTip.setVisibility(View.VISIBLE);
@@ -236,6 +249,7 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 setupTabTime(mTabEventMap.get(CriticFragment.TAG));
                 break;
             case R.id.home_novel:
+                mTag = NovelFragment.TAG;
                 switchPage(NovelFragment.TAG);
                 mTab.setVisibility(View.VISIBLE);
                 mFavoriteTip.setVisibility(View.VISIBLE);
@@ -243,6 +257,7 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 setupTabTime(mTabEventMap.get(NovelFragment.TAG));
                 break;
             case R.id.home_diagram:
+                mTag = DiagramFragment.TAG;
                 switchPage(DiagramFragment.TAG);
                 mTab.setVisibility(View.VISIBLE);
                 mFavoriteTip.setVisibility(View.VISIBLE);
@@ -250,6 +265,7 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 setupTabTime(mTabEventMap.get(DiagramFragment.TAG));
                 break;
             case R.id.home_personal:
+                mTag = PersonalFragment.TAG;
                 switchPage(PersonalFragment.TAG);
                 mTab.setVisibility(View.GONE);
                 mFavoriteTip.setVisibility(View.GONE);
@@ -281,7 +297,7 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-            transaction.add(R.id.home_fragment, mShowFragment, tag);
+            transaction.add(R.id.home_container, mShowFragment, tag);
         }
         transaction.commit();
     }
@@ -289,7 +305,7 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (!isExit){
+            if (!isExit) {
                 Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
                 isExit = true;
                 // 计时任务，在3s后还原状态 isExit 变为false
@@ -309,7 +325,7 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.home_favorite_tip:
                 mShare.setVisibility(View.VISIBLE);
                 break;
@@ -321,14 +337,15 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void setupBottomTabVisible(HomeBottomTabEvent event) {
-        if (event.isVisible()){
+        if (event.isVisible()) {
             mBottomTab.setVisibility(View.VISIBLE);
             mFavoriteTip.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             mBottomTab.setVisibility(View.GONE);
             mFavoriteTip.setVisibility(View.GONE);
         }
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -339,5 +356,26 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     protected void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        switch (buttonView.getId()) {
+            case R.id.home_share_favorite:
+                HomeFavoriteEvent favoriteEvent = new HomeFavoriteEvent(EventConfig.HOME_FAVORITE);
+                favoriteEvent.setTag(mTag);
+                favoriteEvent.setFavorite(isChecked);
+                HomeTabEvent tabEvent = mTabEventMap.get(mTag);
+                if (tabEvent == null) {
+                    tabEvent = mHomeEvent;
+                }
+                favoriteEvent.setPosition(tabEvent.getPosition());
+                favoriteEvent.setMonth(tabEvent.getMonth());
+                favoriteEvent.setWeek(tabEvent.getWeek());
+                favoriteEvent.setDay(tabEvent.getDay());
+
+                EventBus.getDefault().post(favoriteEvent);
+                break;
+        }
     }
 }

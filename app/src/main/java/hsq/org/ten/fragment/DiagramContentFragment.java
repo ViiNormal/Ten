@@ -28,6 +28,8 @@ import retrofit2.Response;
  */
 
 public class DiagramContentFragment extends BaseFragment implements CustomScrollView.ScrollViewListener {
+
+    public static final String TAG = DiagramContentFragment.class.getName();
     private CustomScrollView mScroll;
     private LinearLayout mLayout;
     private ImageView mImage1;

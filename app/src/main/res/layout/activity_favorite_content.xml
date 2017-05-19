@@ -3,25 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="hsq.org.ten.activity.HomeActivity">
+    tools:context="hsq.org.ten.activity.FavoriteContentActivity">
 
     <RelativeLayout
-        android:id="@+id/home_tab"
+        android:id="@+id/favorite_content_tab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorGrayF7"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        >
 
         <ImageView
-            android:id="@+id/home_logo"
+            android:id="@+id/favorite_content_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/logo_critic"
+            android:src="@drawable/back"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
             />
 
         <ImageView
-            android:id="@+id/home_week"
+            android:id="@+id/favorite_content_week"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/week_1"
@@ -29,107 +30,61 @@
             />
 
         <ImageView
-            android:id="@+id/home_month"
+            android:id="@+id/favorite_content_month"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/month_1"
-            android:layout_alignRight="@id/home_week"
-            android:layout_below="@id/home_week"
+            android:layout_alignRight="@id/favorite_content_week"
+            android:layout_below="@id/favorite_content_week"
             />
 
         <ImageView
-            android:id="@+id/home_month_divide"
+            android:id="@+id/favorite_content_divide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/month_divide"
-            android:layout_toLeftOf="@id/home_month"
-            android:layout_below="@id/home_week"
+            android:layout_toLeftOf="@id/favorite_content_month"
+            android:layout_below="@id/favorite_content_week"
             />
 
         <ImageView
-            android:id="@+id/home_date1"
+            android:id="@+id/favorite_content_date1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/date_1"
-            android:layout_toLeftOf="@id/home_month_divide"
+            android:layout_toLeftOf="@id/favorite_content_divide"
             />
 
         <ImageView
-            android:id="@+id/home_date0"
+            android:id="@+id/favorite_content_date0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/date_0"
-            android:layout_toLeftOf="@id/home_date1"
+            android:layout_toLeftOf="@id/favorite_content_date1"
             />
 
     </RelativeLayout>
-    <RadioGroup
-        android:id="@+id/home_bottomtab"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorGray21"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <RadioButton
-            android:id="@+id/home_critic"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:button="@null"
-            android:drawableLeft="@drawable/selector_home_critic"
-            android:paddingLeft="30dp"/>
-
-        <RadioButton
-            android:id="@+id/home_novel"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:button="@null"
-            android:drawableLeft="@drawable/selector_home_novel"
-            android:paddingLeft="30dp"/>
-
-        <RadioButton
-            android:id="@+id/home_diagram"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:button="@null"
-            android:drawableLeft="@drawable/selector_home_diagram"
-            android:paddingLeft="30dp"/>
-
-        <RadioButton
-            android:id="@+id/home_personal"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:button="@null"
-            android:drawableLeft="@drawable/selector_home_personal"
-            android:paddingLeft="30dp"/>
-
-    </RadioGroup>
 
     <FrameLayout
-        android:id="@+id/home_container"
+        android:id="@+id/favorite_content_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/home_tab"
-        android:layout_above="@id/home_bottomtab"/>
+        android:layout_below="@id/favorite_content_tab"
+        />
 
     <ImageView
-        android:id="@+id/home_favorite_tip"
+        android:id="@+id/favorite_content_favorite_tip"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/icon_favorite_tip"
-        android:layout_above="@id/home_bottomtab"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="25dp"
         />
 
     <RelativeLayout
-        android:id="@+id/home_share"
+        android:id="@+id/favorite_content_share"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorGray33"
@@ -137,7 +92,7 @@
         >
 
         <CheckBox
-            android:id="@+id/home_share_favorite"
+            android:id="@+id/favorite_content_share_favorite"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerVertical="true"
@@ -147,14 +102,14 @@
             />
 
         <ImageView
-            android:id="@+id/home_share_weixin"
+            android:id="@+id/favorite_content_share_weixin"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerInParent="true"
             android:src="@drawable/share_weixin"/>
 
         <ImageView
-            android:id="@+id/home_share_pengyouquan"
+            android:id="@+id/favorite_content_share_pengyouquan"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_centerVertical="true"
@@ -163,29 +118,29 @@
             android:src="@drawable/share_pengyouquan"/>
 
         <ImageView
-            android:id="@+id/home_share_weibo"
+            android:id="@+id/favorite_content_share_weibo"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_alignLeft="@id/home_share_favorite"
-            android:layout_below="@id/home_share_favorite"
+            android:layout_alignLeft="@id/favorite_content_share_favorite"
+            android:layout_below="@id/favorite_content_share_favorite"
             android:layout_marginTop="50dp"
             android:src="@drawable/share_weibo"/>
 
         <ImageView
-            android:id="@+id/home_share_qq_bound"
+            android:id="@+id/favorite_content_share_qq_bound"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_alignLeft="@id/home_share_weixin"
-            android:layout_below="@id/home_share_weixin"
+            android:layout_alignLeft="@id/favorite_content_share_weixin"
+            android:layout_below="@id/favorite_content_share_weixin"
             android:layout_marginTop="50dp"
             android:src="@drawable/share_qq_bound"/>
 
         <ImageView
-            android:id="@+id/home_share_qqzone_bound"
+            android:id="@+id/favorite_content_share_qqzone_bound"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_alignLeft="@id/home_share_pengyouquan"
-            android:layout_below="@id/home_share_pengyouquan"
+            android:layout_alignLeft="@id/favorite_content_share_pengyouquan"
+            android:layout_below="@id/favorite_content_share_pengyouquan"
             android:layout_marginTop="50dp"
             android:src="@drawable/share_qqzone_bound"/>
 
@@ -193,7 +148,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_above="@id/home_share_favorite"
+            android:layout_above="@id/favorite_content_share_favorite"
             android:text="分享至"
             android:textColor="@color/colorWhite"
             android:gravity="center"

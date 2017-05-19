@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="hsq.org.ten.activity.FavoriteActivity">
+
+    <RelativeLayout
+        android:id="@+id/favorite_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGrayF7"
+        >
+
+    <ImageView
+        android:id="@+id/favorite_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back"
+        android:layout_centerVertical="true"
+        android:layout_margin="10dp"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="我的收藏"
+            android:textColor="@color/colorBack20"
+            android:textSize="15sp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/favorite_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_below="@id/favorite_tab">
+
+        <TextView
+            android:id="@+id/favorite_num"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="x个内容被你收藏，愿他们曾伴你好梦"
+            android:gravity="center"
+            android:textColor="@color/colorGray7B"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorGrayD6"
+
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/favorite_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/favorite_null"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/favorite_tab">
+
+        <TextView
+            android:id="@+id/favorite_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击文章右下角红色图标"
+            android:layout_centerInParent="true"
+            android:textColor="@color/colorGray94"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="即可找到收藏按钮"
+            android:layout_below="@id/favorite_text"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorGray94"
+            android:textSize="15sp"
+            />
+
+
+        <ImageView
+            android:id="@+id/favorite_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_favorite_tip"
+            android:layout_above="@id/favorite_text"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+</RelativeLayout>

@@ -6,11 +6,16 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGray21">#dd212121</color>
     <color name="colorGray33">#33333333</color>
+    <color name="colorGray52">#525252</color>
     <color name="colorGray63">#636363</color>
+    <color name="colorGray7B">#7B7B7B</color>
+    <color name="colorGray94">#949494</color>
     <color name="colorGray9C">#9C9C9C</color>
-    <color name="colorGrayD6">#D6D3D6</color>
-    <color name="colorGrayDE">#DEDBDE</color>
+    <color name="colorGrayB5">#B5B5B5</color>
+    <color name="colorGrayD6">#D6D6D6</color>
+    <color name="colorGrayDE">#DEDEDE</color>
     <color name="colorGrayF7">#F7F7F7</color>
     <color name="colorBack">#000000</color>
+    <color name="colorBack20">#182021</color>
     <color name="colorRed">#EF5552</color>
 </resources>

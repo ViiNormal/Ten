@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     >
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:background="@color/colorRed">
@@ -14,29 +14,28 @@
             android:layout_width="65dp"
             android:layout_height="65dp"
             android:layout_marginTop="35dp"
-            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
             android:src="@drawable/avator_login"
             />
 
         <ImageView
-            android:id="@+id/home_personal_avator_whiteline"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
             android:src="@drawable/avator_whiteline"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/home_personal_avator_whiteline"
+            android:layout_gravity="center_horizontal"
             android:text="点击用QQ登录"
             android:textColor="@color/colorWhite"
+            android:layout_marginTop="110dp"
             android:textSize="12sp"
-            android:layout_centerHorizontal="true"
             />
-    </RelativeLayout>
+    </FrameLayout>
 
     <RelativeLayout
         android:id="@+id/home_personal_favorite"
