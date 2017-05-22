@@ -58,7 +58,6 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private HomeTabEvent mHomeEvent;
     private CheckBox mShareFavorite;
     private String mTag;
-//    private Map<String, Map<Integer, HomeFavoriteEvent>> mFavoriteEventMap;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -98,6 +97,7 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             event = mHomeEvent;
         }
         if (event.WHAT == EventConfig.HOME_TAB_TIME) {
+
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(mTime - event.getPosition() * TimeConfig.DAY_TIME);
             int month = calendar.get(Calendar.MONTH);
@@ -369,7 +369,8 @@ public class HomeActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 if (tabEvent == null) {
                     tabEvent = mHomeEvent;
                 }
-                favoriteEvent.setPosition(tabEvent.getPosition());
+                int position = tabEvent.getPosition();
+                favoriteEvent.setPosition(position);
                 favoriteEvent.setMonth(tabEvent.getMonth());
                 favoriteEvent.setWeek(tabEvent.getWeek());
                 favoriteEvent.setDay(tabEvent.getDay());

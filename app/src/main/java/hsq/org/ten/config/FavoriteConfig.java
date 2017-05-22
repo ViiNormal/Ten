@@ -6,6 +6,7 @@ package hsq.org.ten.config;
 
 public interface FavoriteConfig {
     String TAG = "favorite";
+    String POSTION = "position";
     String CRITIC = "影评";
     String NOVEL = "文章";
     String DIAGRAM = "美图";

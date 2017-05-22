@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="hsq.org.ten.activity.FeedbackActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/feedback_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGrayF7">
+
+        <ImageView
+            android:id="@+id/feedback_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="关于十个"
+            android:textColor="@color/colorBack20"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="加微信或QQ反馈问题，我们会第一时间为你解决。"
+        android:layout_below="@id/feedback_tab"
+        android:layout_marginTop="50dp"
+        android:textSize="12sp"
+        />
+
+    <View
+        android:id="@+id/feedback_view"
+        android:layout_width="1px"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:id="@+id/feedback_qq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:drawableLeft="@drawable/feedback_qq"
+        android:text="QQ号："
+        android:textSize="12sp"
+        android:layout_toLeftOf="@id/feedback_view"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@color/colorBlue"
+        android:text="@string/qq"
+        android:textSize="12sp"
+        android:layout_toRightOf="@id/feedback_view"/>
+
+    <TextView
+        android:id="@+id/feedback_weixin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/feedback_weixin"
+        android:text="微信公众账号："
+        android:textSize="12sp"
+        android:layout_alignLeft="@id/feedback_qq"
+        android:layout_alignBottom="@id/feedback_qq"
+        android:layout_marginBottom="50dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="@string/weixin"
+        android:textSize="12sp"
+        android:textColor="@color/colorBlue"
+        android:layout_alignTop="@id/feedback_weixin"
+        android:layout_toRightOf="@id/feedback_weixin"/>
+</RelativeLayout>

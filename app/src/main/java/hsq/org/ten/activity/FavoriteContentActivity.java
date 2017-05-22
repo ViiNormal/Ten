@@ -1,5 +1,6 @@
 package hsq.org.ten.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -21,7 +22,7 @@ import hsq.org.ten.bean.FavoriteBean;
 import hsq.org.ten.config.EventConfig;
 import hsq.org.ten.config.FavoriteConfig;
 import hsq.org.ten.config.TranslateConfig;
-import hsq.org.ten.db.FavoriteDao;
+import hsq.org.ten.db.dao.FavoriteDao;
 import hsq.org.ten.event.FavoriteEvent;
 import hsq.org.ten.fragment.CriticContentFragment;
 import hsq.org.ten.fragment.DiagramContentFragment;
@@ -42,6 +43,7 @@ public class FavoriteContentActivity extends BaseActivity implements View.OnClic
     private FavoriteBean mFavoriteBean;
     private FavoriteDao mDao;
     private boolean isFavorite;
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,9 @@ public class FavoriteContentActivity extends BaseActivity implements View.OnClic
 
     @Override
     protected void initData() {
-        mFavoriteBean = (FavoriteBean) getIntent().getSerializableExtra(FavoriteConfig.TAG);
+        Intent intent = getIntent();
+        mFavoriteBean = (FavoriteBean) intent.getSerializableExtra(FavoriteConfig.TAG);
+        position = intent.getIntExtra(FavoriteConfig.POSTION, 0);
         mDao = new FavoriteDao(this);
         setupTabTime();
         setupContainer();
@@ -255,6 +259,7 @@ public class FavoriteContentActivity extends BaseActivity implements View.OnClic
                 FavoriteEvent event = new FavoriteEvent(EventConfig.FAVORITE);
                 event.setBean(mFavoriteBean);
                 event.setFavorite(isChecked);
+                event.setPosition(position);
                 isFavorite = isChecked;
                 EventBus.getDefault().post(event);
                 if (isChecked) {

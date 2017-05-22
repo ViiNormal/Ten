@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="hsq.org.ten.activity.FontsizeActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="safakjsfhksahfdkasddasdasdasd"
+        android:textSize="18sp"
+        android:padding="10dp"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:orientation="horizontal">
+
+
+        <RadioButton
+            android:id="@+id/fontsize_s"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/selector_fontsize_s"
+            android:gravity="center"
+            android:text="眼神儿好"
+            android:textColor="@drawable/selector_fontsize_color"/>
+
+        <RadioButton
+            android:id="@+id/fontsize_m"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/selector_fontsize_m"
+            android:gravity="center"
+            android:text="不大不小"
+            android:textColor="@drawable/selector_fontsize_color"/>
+
+        <RadioButton
+            android:id="@+id/fontsize_l"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/selector_fontsize_l"
+            android:gravity="center"
+            android:text="我要大大"
+            android:textColor="@drawable/selector_fontsize_color"/>
+
+    </RadioGroup>
+
+</RelativeLayout>

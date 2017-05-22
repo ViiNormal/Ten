@@ -18,7 +18,7 @@ import hsq.org.ten.api.ApiService;
 import hsq.org.ten.bean.CriticListBean;
 import hsq.org.ten.bean.FavoriteBean;
 import hsq.org.ten.config.EventConfig;
-import hsq.org.ten.db.FavoriteDao;
+import hsq.org.ten.db.dao.FavoriteDao;
 import hsq.org.ten.event.HomeFavoriteEvent;
 import hsq.org.ten.event.HomeTabEvent;
 import retrofit2.Call;
@@ -35,6 +35,7 @@ public class CriticFragment extends BaseFragment implements ViewPager.OnPageChan
     private ViewPager mViewPager;
     private CriticFragmentPagerAdapter adapter;
     private FavoriteDao mDao;
+    private int position = -1;
 
     @Override
     protected int getLayoutId() {
@@ -101,7 +102,8 @@ public class CriticFragment extends BaseFragment implements ViewPager.OnPageChan
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void favorite(HomeFavoriteEvent event){
         if (event.WHAT == EventConfig.HOME_FAVORITE && TextUtils.equals(TAG, event.getTag())){
-            CriticListBean.ResultBean dataItem = adapter.getDataItem(event.getPosition());
+            position = event.getPosition();
+            CriticListBean.ResultBean dataItem = adapter.getDataItem(position);
             if (dataItem != null) {
                 if (event.isFavorite()) {
                     FavoriteBean favoriteBean = new FavoriteBean(dataItem.getId(), dataItem.getType(), event.getMonth(), event.getWeek(), event.getDay(), dataItem.getTitle(), dataItem.getSummary());

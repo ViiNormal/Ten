@@ -7,7 +7,10 @@ import android.widget.RelativeLayout;
 
 import hsq.org.ten.BaseFragment;
 import hsq.org.ten.R;
+import hsq.org.ten.activity.AboutActivity;
 import hsq.org.ten.activity.FavoriteActivity;
+import hsq.org.ten.activity.FeedbackActivity;
+import hsq.org.ten.activity.FontsizeActivity;
 
 /**
  * Created by 黄上清 on 2017/5/16.
@@ -44,6 +47,8 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
     @Override
     protected void initListener() {
         mFavorite.setOnClickListener(this);
+        mAboutus.setOnClickListener(this);
+        mFeedback.setOnClickListener(this);
     }
 
     @Override
@@ -56,6 +61,15 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
         switch (v.getId()){
             case R.id.home_personal_favorite:
                 startActivity(new Intent(getContext(), FavoriteActivity.class));
+                break;
+            case R.id.home_personal_font:
+                startActivity(new Intent(getContext(), FontsizeActivity.class));
+                break;
+            case R.id.home_personal_aboutus:
+                startActivity(new Intent(getContext(), AboutActivity.class));
+                break;
+            case R.id.home_personal_feedback:
+                startActivity(new Intent(getContext(), FeedbackActivity.class));
                 break;
         }
     }

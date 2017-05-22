@@ -18,7 +18,7 @@ import hsq.org.ten.api.ApiService;
 import hsq.org.ten.bean.DiagramListBean;
 import hsq.org.ten.bean.FavoriteBean;
 import hsq.org.ten.config.EventConfig;
-import hsq.org.ten.db.FavoriteDao;
+import hsq.org.ten.db.dao.FavoriteDao;
 import hsq.org.ten.event.HomeFavoriteEvent;
 import hsq.org.ten.event.HomeTabEvent;
 import retrofit2.Call;

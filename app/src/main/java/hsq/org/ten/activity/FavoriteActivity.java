@@ -22,7 +22,7 @@ import hsq.org.ten.adapter.FavoriteAdapter;
 import hsq.org.ten.bean.FavoriteBean;
 import hsq.org.ten.config.EventConfig;
 import hsq.org.ten.config.FavoriteConfig;
-import hsq.org.ten.db.FavoriteDao;
+import hsq.org.ten.db.dao.FavoriteDao;
 import hsq.org.ten.event.FavoriteEvent;
 
 public class FavoriteActivity extends BaseActivity implements FavoriteAdapter.OnItemClickListener, View.OnClickListener {
@@ -39,6 +39,7 @@ public class FavoriteActivity extends BaseActivity implements FavoriteAdapter.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite);
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -81,6 +82,7 @@ public class FavoriteActivity extends BaseActivity implements FavoriteAdapter.On
         if (item != null) {
             Intent intent = new Intent(this, FavoriteContentActivity.class);
             intent.putExtra(FavoriteConfig.TAG, item);
+            intent.putExtra(FavoriteConfig.POSTION, position);
             startActivity(intent);
         }
     }
@@ -95,22 +97,17 @@ public class FavoriteActivity extends BaseActivity implements FavoriteAdapter.On
         if (event.WHAT == EventConfig.FAVORITE) {
             FavoriteBean bean = event.getBean();
             if (event.isFavorite()) {
-                adapter.addItem(bean);
+                adapter.addItem(event.getPosition(), bean);
             } else {
-                adapter.deleteItem(bean);
+                adapter.deleteItem(event.getPosition());
             }
             mNum.setText(String.format("%d个内容被你收藏，愿他们曾伴你好梦", adapter.getItemCount()));
         }
     }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onDestroy() {
+        super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
 }

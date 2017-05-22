@@ -9,6 +9,7 @@ import hsq.org.ten.bean.FavoriteBean;
 public class FavoriteEvent extends BaseEvent {
     private boolean isFavorite;
     private FavoriteBean bean;
+    private int position;
     public FavoriteEvent(int what) {
         super(what);
     }
@@ -27,5 +28,13 @@ public class FavoriteEvent extends BaseEvent {
 
     public void setBean(FavoriteBean bean) {
         this.bean = bean;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 }

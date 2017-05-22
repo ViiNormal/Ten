@@ -9,4 +9,5 @@ public interface EventConfig {
     int HOME_BOTTOM_TAB_VISIBLE = 101;
     int HOME_FAVORITE = 102;
     int FAVORITE = 103;
+    int SHARE_FAVORITE = 104;
 }

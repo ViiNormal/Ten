@@ -12,9 +12,9 @@ import java.io.Serializable;
 public class FavoriteBean implements Serializable{
     @DatabaseField(generatedId = true)
     private long _id;
-    @DatabaseField(canBeNull = false)
+    @DatabaseField(uniqueCombo = true,canBeNull = false)
     private int id;
-    @DatabaseField(canBeNull = false)
+    @DatabaseField(uniqueCombo = true,canBeNull = false)
     private int type;
     @DatabaseField(canBeNull = false)
     private int month;

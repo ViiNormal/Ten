@@ -1,4 +1,4 @@
-package hsq.org.ten.db;
+package hsq.org.ten.db.dao;
 
 import android.content.Context;
 
@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import hsq.org.ten.bean.FavoriteBean;
+import hsq.org.ten.db.DBHelper;
 
 /**
  * Created by 黄上清 on 2017/5/19.
@@ -98,5 +99,14 @@ public class FavoriteDao {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public List<FavoriteBean> queryItemByTypeAndId(int type, int id){
+        try {
+            return mDao.queryBuilder().where().eq("type", type).and().eq("id", id).query();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

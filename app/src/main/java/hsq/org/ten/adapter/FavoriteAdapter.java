@@ -41,9 +41,17 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
             notifyDataSetChanged();
         }
     }
-    public void deleteItem(FavoriteBean data){
+
+    public void addItem(int position, FavoriteBean data){
         if (data != null) {
-            this.data.remove(data);
+            this.data.add(position, data);
+            notifyDataSetChanged();
+        }
+    }
+
+    public void deleteItem(int position){
+        if (data != null) {
+            this.data.remove(position);
             notifyDataSetChanged();
         }
     }
@@ -75,6 +83,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         int day = bean.getDay();
         holder.day.setText(day < 10 ? "0" + day : day + "");
         int month = bean.getMonth();
+        month++;
         holder.month.setText(month < 10 ? "0" + month : month + "");
         holder.title.setText(bean.getTitle());
         holder.summary.setText(bean.getSummary());
@@ -104,7 +113,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     }
 
     public FavoriteBean getItem(int position){
-        if (position > 0 && position < data.size()){
+        if (position >= 0 && position < data.size()){
             return data.get(position);
         }
         return null;
